@@ -181,3 +181,8 @@ def init(app):  # pylint: disable=unused-argument
     :return: None
     """
     LogView.register(cbpi.app, route_base='/api/logs')
+    
+    plot_step = app.get_config_parameter("plot_step",None)
+    if plot_step is None:
+        plot_step = 60
+        cbpi.add_config_parameter("plot_step", 60, "number", "Plot step for chart points")
